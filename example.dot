@@ -1,0 +1,114 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/lib/core/enum.dart" [label="enum"];
+  "/lib/core/form_validator/email_validator.dart" [label="email_validator"];
+  "/lib/core/form_validator/older18_validator.dart" [label="older18_validator"];
+  "/lib/core/form_validator/phone_validator.dart" [label="phone_validator"];
+  "/lib/core/network/api_client.dart" [label="api_client"];
+  "/lib/core/network/api_interface.dart" [label="api_interface"];
+  "/lib/features/form_entry/data/form_repo.dart" [label="form_repo"];
+  "/lib/features/form_entry/data/models/form_model.dart" [label="form_model"];
+  "/lib/features/form_entry/domain/entity/form_entity.dart" [label="form_entity"];
+  "/lib/features/form_entry/domain/form_usecase.dart" [label="form_usecase"];
+  "/lib/features/form_entry/presentation/common/form_widget.dart" [label="form_widget"];
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart" [label="dynamic_form_presenter"];
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart" [label="dynamic_form_view"];
+  "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart" [label="normal_form_presenter"];
+  "/lib/features/form_entry/presentation/normal_form/normal_form_view.dart" [label="normal_form_view"];
+  "/lib/main.dart" [label="main"];
+  "/test/widget_test.dart" [label="widget_test"];
+  subgraph "cluster~" {
+    label="uniform_form_app";
+    subgraph "cluster~/lib" {
+      label="lib";
+      "/lib/main.dart";
+      subgraph "cluster~/lib/core" {
+        label="core";
+        "/lib/core/enum.dart";
+        subgraph "cluster~/lib/core/form_validator" {
+          label="form_validator";
+          "/lib/core/form_validator/email_validator.dart";
+          "/lib/core/form_validator/older18_validator.dart";
+          "/lib/core/form_validator/phone_validator.dart";
+        }
+        subgraph "cluster~/lib/core/network" {
+          label="network";
+          "/lib/core/network/api_client.dart";
+          "/lib/core/network/api_interface.dart";
+        }
+      }
+      subgraph "cluster~/lib/features" {
+        label="features";
+        subgraph "cluster~/lib/features/form_entry" {
+          label="form_entry";
+          subgraph "cluster~/lib/features/form_entry/data" {
+            label="data";
+            "/lib/features/form_entry/data/form_repo.dart";
+            subgraph "cluster~/lib/features/form_entry/data/models" {
+              label="models";
+              "/lib/features/form_entry/data/models/form_model.dart";
+            }
+          }
+          subgraph "cluster~/lib/features/form_entry/domain" {
+            label="domain";
+            "/lib/features/form_entry/domain/form_usecase.dart";
+            subgraph "cluster~/lib/features/form_entry/domain/entity" {
+              label="entity";
+              "/lib/features/form_entry/domain/entity/form_entity.dart";
+            }
+          }
+          subgraph "cluster~/lib/features/form_entry/presentation" {
+            label="presentation";
+            subgraph "cluster~/lib/features/form_entry/presentation/common" {
+              label="common";
+              "/lib/features/form_entry/presentation/common/form_widget.dart";
+            }
+            subgraph "cluster~/lib/features/form_entry/presentation/dynamic_form" {
+              label="dynamic_form";
+              "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart";
+              "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart";
+            }
+            subgraph "cluster~/lib/features/form_entry/presentation/normal_form" {
+              label="normal_form";
+              "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart";
+              "/lib/features/form_entry/presentation/normal_form/normal_form_view.dart";
+            }
+          }
+        }
+      }
+    }
+    subgraph "cluster~/test" {
+      label="test";
+      "/test/widget_test.dart";
+    }
+  }
+  "/lib/core/network/api_interface.dart" -> "/lib/core/network/api_client.dart";
+  "/lib/features/form_entry/data/form_repo.dart" -> "/lib/core/enum.dart";
+  "/lib/features/form_entry/data/form_repo.dart" -> "/lib/core/network/api_interface.dart";
+  "/lib/features/form_entry/data/form_repo.dart" -> "/lib/features/form_entry/data/models/form_model.dart";
+  "/lib/features/form_entry/data/models/form_model.dart" -> "/lib/core/enum.dart";
+  "/lib/features/form_entry/domain/entity/form_entity.dart" -> "/lib/core/enum.dart";
+  "/lib/features/form_entry/domain/form_usecase.dart" -> "/lib/core/enum.dart";
+  "/lib/features/form_entry/domain/form_usecase.dart" -> "/lib/features/form_entry/data/form_repo.dart";
+  "/lib/features/form_entry/domain/form_usecase.dart" -> "/lib/features/form_entry/data/models/form_model.dart";
+  "/lib/features/form_entry/domain/form_usecase.dart" -> "/lib/features/form_entry/domain/entity/form_entity.dart";
+  "/lib/features/form_entry/presentation/common/form_widget.dart" -> "/lib/features/form_entry/domain/entity/form_entity.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart" -> "/lib/core/form_validator/email_validator.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart" -> "/lib/core/form_validator/phone_validator.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart" -> "/lib/features/form_entry/domain/entity/form_entity.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart" -> "/lib/features/form_entry/domain/form_usecase.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart" -> "/lib/core/enum.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart" -> "/lib/features/form_entry/presentation/common/form_widget.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart" -> "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_presenter.dart";
+  "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart" -> "/lib/features/form_entry/domain/entity/form_entity.dart";
+  "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart" -> "/lib/core/form_validator/email_validator.dart";
+  "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart" -> "/lib/core/form_validator/older18_validator.dart";
+  "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart" -> "/lib/features/form_entry/domain/entity/form_entity.dart";
+  "/lib/features/form_entry/presentation/normal_form/normal_form_view.dart" -> "/lib/features/form_entry/presentation/normal_form/normal_form_presenter.dart";
+  "/lib/features/form_entry/presentation/normal_form/normal_form_view.dart" -> "/lib/features/form_entry/presentation/common/form_widget.dart";
+  "/lib/main.dart" -> "/lib/features/form_entry/presentation/dynamic_form/dynamic_form_view.dart";
+  "/lib/main.dart" -> "/lib/features/form_entry/presentation/normal_form/normal_form_view.dart";
+  "/test/widget_test.dart" -> "/lib/main.dart";
+}

@@ -1,0 +1,28 @@
+name: uniform_form_app
+description: "A new Flutter project that testing the generation of Forms using the Uniform package."
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  uniform: ^2.0.4
+  flutter_riverpod: ^2.4.9
+  file_picker: ^6.1.1
+  http: ^1.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
