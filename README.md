@@ -1,16 +1,5 @@
 # uniform_form_app
 
-A new Flutter project.
+This app is being used to create a Normal Form and a Dynamic Form using the 	[Uniform](https://pub.dev/packages/uniform) Package from Acme Software.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dynamic Form takes its structure from a Mock Server that provides a JSON which is then generated inside the app directly using the Uniform Package
